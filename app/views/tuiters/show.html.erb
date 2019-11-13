@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>User:</strong>
+  <%= @tuiter.user_id %>
+</p>
+
+<p>
+  <strong>Content:</strong>
+  <%= @tuiter.content %>
+</p>
+
+<%= link_to 'Edit', edit_tuiter_path(@tuiter) %> |
+<%= link_to 'Back', tuiters_path %>

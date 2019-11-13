@@ -1,0 +1,47 @@
+<div class="row mt-5">
+    <div class="col-4">
+    <div class="card" style="width: 18rem;">
+    <% url = Gravatar.new(current_user.email).image_url %>
+    <%= image_tag url, class: "card-img-top" %>
+  <div class="card-body">
+  </div>
+</div>
+     </div>
+    <div class="col-8">
+    <h1>Tuiters</h1>
+
+
+    <% @tuiters.order(id: :desc).each do |tuiter| %>
+
+        <% if tuiter.photo.file? %>
+          <%= image_tag tuiter.photo.url, class: "rounded-lg mb-3 img-size-limit" %>
+        <% end %>
+
+        <div class="card" style="width: 18rem;">
+          <img src="..." class="card-img-top" alt="...">
+          <div class="card-body">
+            <%= tuiter.user_id %>
+            <%= tuiter.content %>
+            <%= tuiter.created_at.strftime("%d/%m/%Y - %H:%M") %>
+            <%= link_to 'Show', tuiter %>
+            <% if current_user == tuiter.user %>
+                    <%= link_to 'Edit', edit_tuiter_path(tuiter) %>
+                    <%= link_to 'Destroy', tuiter, method: :delete, data: { confirm: 'Are you sure?' } %>+
+                <% end %>
+
+            </div>
+          </div>
+
+
+    <% end %>
+
+
+<br>
+
+<%= link_to 'New Tuiter', new_tuiter_path %>
+
+
+     </div>
+</div>
+
+

@@ -1,0 +1,2 @@
+class Piu < ApplicationRecord
+end
